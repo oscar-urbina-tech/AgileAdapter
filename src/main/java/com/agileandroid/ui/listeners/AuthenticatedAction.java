@@ -8,11 +8,6 @@ import android.view.View;
 public abstract class AuthenticatedAction implements Permissionable{
 
     /**
-     * The permission.
-     */
-    private boolean permission;
-
-    /**
      * Execute action.
      *
      * @param v the v
@@ -23,29 +18,10 @@ public abstract class AuthenticatedAction implements Permissionable{
     }
 
     /**
-     * User has permission.
-     *
-     * @return the boolean
-     */
-    protected boolean hasPermission() {
-        return this.permission;
-    }
-
-    /**
-     * Set user permission
-     *
-     * @param permission
-     */
-    @Override
-    public void setPermission(boolean permission) {
-        this.permission = permission;
-    }
-
-    /**
      * Execute user unathorized action.
      */
     @Override
-    public void executeUserUnathorizedAction() {
+    public void executeUserUnathorizedAction(View v) {
 
     }
 }

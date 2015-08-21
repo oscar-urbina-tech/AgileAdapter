@@ -17,12 +17,5 @@ public interface Permissionable {
     /**
      * Execute user unathorized action.
      */
-    void executeUserUnathorizedAction();
-
-    /**
-     * Sets permission.
-     *
-     * @param access the access
-     */
-    void setPermission(boolean access);
+    void executeUserUnathorizedAction(View v);
 }
