@@ -44,29 +44,35 @@ public class AuthenticationClickListener extends AuthenticatedAction implements 
     /**
      * Execute action.
      *
-     * @param v the v
+     * @param view implementing onClickListener
      */
     @Override
-    public void executeAction(View v) {
-        super.executeAction(v);
+    public void executeAction(View view) {
+        super.executeAction(view);
     }
 
     /**
      * Execute user unathorized action.
+     *
+     * @param view implementing onClickListener
      */
     @Override
-    public void executeUserUnathorizedAction(View v) {
-        super.executeUserUnathorizedAction(v);
+    public void executeUserUnathorizedAction(View view) {
+        super.executeUserUnathorizedAction(view);
     }
 
+    /**
+     *
+     * @param view Current view
+     */
     @Override
-    public void onClick(View v) {
+    public void onClick(View view) {
 
         if (!this.hasPermission()) {
-            this.executeUserUnathorizedAction(v);
+            this.executeUserUnathorizedAction(view);
             return;
         }
 
-        this.executeAction(v);
+        this.executeAction(view);
     }
 }

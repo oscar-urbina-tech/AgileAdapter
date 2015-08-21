@@ -10,18 +10,20 @@ public abstract class AuthenticatedAction implements Permissionable{
     /**
      * Execute action.
      *
-     * @param v the v
+     * @param view implementing onClickListener
      */
     @Override
-    public void executeAction(View v) {
+    public void executeAction(View view) {
 
     }
 
     /**
      * Execute user unathorized action.
+     *
+     * @param view implementing onClickListener
      */
     @Override
-    public void executeUserUnathorizedAction(View v) {
+    public void executeUserUnathorizedAction(View view) {
 
     }
 }

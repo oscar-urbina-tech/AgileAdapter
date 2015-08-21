@@ -10,12 +10,14 @@ public interface Permissionable {
     /**
      * Execute action.
      *
-     * @param v the v
+     * @param view implementing onClickListener
      */
-    void executeAction(View v);
+    void executeAction(View view);
 
     /**
      * Execute user unathorized action.
+     *
+     * @param view implementing onClickListener
      */
-    void executeUserUnathorizedAction(View v);
+    void executeUserUnathorizedAction(View view);
 }
