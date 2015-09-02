@@ -122,11 +122,11 @@ public class AgileRecyclerAdapter extends RecyclerView.Adapter<RecyclerHolder>{
     /**
      * Update posts list.
      *
-     * @param newPostList the new post list
+     * @param newItemList the new item list
      */
-    public void appendNewItemList(List<?> newPostList){
+    public void appendNewItemList(List<?> newItemList){
 
-        for(Object item : newPostList){
+        for(Object item : newItemList){
             this.itemList.add(item);
         }
         notifyDataSetChanged();

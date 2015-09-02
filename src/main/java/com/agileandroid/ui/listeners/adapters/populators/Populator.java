@@ -10,5 +10,5 @@ public abstract class Populator {
     /**
      * Populate current view.
      */
-    public abstract void populate(PopulatorBuilder populatorBuilder);
+    public abstract void populate(final PopulatorBuilder populatorBuilder);
 }
