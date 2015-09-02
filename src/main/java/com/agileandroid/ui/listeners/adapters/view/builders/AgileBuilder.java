@@ -1,24 +1,25 @@
-package com.agileandroid.ui.listeners.adapters.builders;
+package com.agileandroid.ui.listeners.adapters.view.builders;
 
 import android.content.Context;
+import android.view.View;
 
-import com.agileandroid.ui.listeners.adapters.holders.HolderRecycler;
+import com.agileandroid.ui.listeners.adapters.recycler.holder.HolderRecycler;
 
 /**
  * The type Populator builder.
  *
  * @param <T> the type parameter
  */
-public class AgileRecyclerBuilder<T> {
+public class AgileBuilder<T> {
 
     private Context context;
     private T item;
-    private HolderRecycler holderRecycler;
+    private View view;
 
-    private AgileRecyclerBuilder(Builder<T> builder) {
+    private AgileBuilder(Builder<T> builder) {
         this.context = builder.getContext();
         this.item = builder.item;
-        this.holderRecycler = builder.getHolderRecycler();
+        this.view = builder.getView();
     }
 
     /**
@@ -44,8 +45,8 @@ public class AgileRecyclerBuilder<T> {
      *
      * @return the recycler holder
      */
-    public HolderRecycler getHolderRecycler() {
-        return holderRecycler;
+    public View getView() {
+        return this.view;
     }
 
     /**
@@ -56,14 +57,14 @@ public class AgileRecyclerBuilder<T> {
     public static class Builder<T> {
         private Context context;
         private T item;
-        private HolderRecycler holderRecycler;
+        private View view;
         /**
          * Instantiates a new Builder.
          *
-         * @param holderRecycler the recycler holder
+         * @param view the recycler holder
          */
-        public Builder(HolderRecycler holderRecycler) {
-            this.holderRecycler = holderRecycler;
+        public Builder(View view) {
+            this.view = view;
         }
 
         /**
@@ -101,8 +102,8 @@ public class AgileRecyclerBuilder<T> {
             return this;
         }
 
-        private HolderRecycler getHolderRecycler() {
-            return holderRecycler;
+        private View getView() {
+            return this.view;
         }
 
         /**
@@ -110,8 +111,8 @@ public class AgileRecyclerBuilder<T> {
          *
          * @return the populator builder
          */
-        public AgileRecyclerBuilder<T> build() {
-            return new AgileRecyclerBuilder<T>(this);
+        public AgileBuilder<T> build() {
+            return new AgileBuilder<T>(this);
         }
     }
 }

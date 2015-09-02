@@ -1,4 +1,4 @@
-package com.agileandroid.ui.listeners.adapters.holders;
+package com.agileandroid.ui.listeners.adapters.recycler.holder;
 
 /**
  * Created by oscar.urbina on 8/28/15.

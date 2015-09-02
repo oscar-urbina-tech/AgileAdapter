@@ -1,17 +1,18 @@
-package com.agileandroid.ui.listeners.adapters;
+package com.agileandroid.ui.listeners.adapters.recycler;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.agileandroid.ui.listeners.adapters.builders.AgileRecyclerBuilder;
-import com.agileandroid.ui.listeners.adapters.builders.ViewResolverRecyclerBuilder;
-import com.agileandroid.ui.listeners.adapters.dto.AgileAdapterDTORecycler;
-import com.agileandroid.ui.listeners.adapters.dto.InteractorDTO;
-import com.agileandroid.ui.listeners.adapters.holders.HolderRecycler;
-import com.agileandroid.ui.listeners.adapters.interactors.Interactor;
-import com.agileandroid.ui.listeners.adapters.populators.Populator;
-import com.agileandroid.ui.listeners.adapters.resolvers.ViewResolverRecycler;
+import com.agileandroid.ui.listeners.adapters.recycler.populator.Populator;
+import com.agileandroid.ui.listeners.adapters.recycler.builder.AgileRecyclerBuilder;
+import com.agileandroid.ui.listeners.adapters.recycler.builder.ViewResolverRecyclerBuilder;
+import com.agileandroid.ui.listeners.adapters.recycler.dto.AgileAdapterDTORecycler;
+import com.agileandroid.ui.listeners.adapters.view.dto.InteractorDTO;
+import com.agileandroid.ui.listeners.adapters.recycler.holder.HolderRecycler;
+import com.agileandroid.ui.listeners.adapters.recycler.interactor.Interactor;
+
+import com.agileandroid.ui.listeners.adapters.recycler.resolver.ViewResolverRecycler;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ import java.util.List;
 public class AgileRecyclerAdapter extends RecyclerView.Adapter<HolderRecycler>{
 
     /**
-     * The Posts list.
+     * The Item list.
      */
     protected List itemList;
     private Context context;

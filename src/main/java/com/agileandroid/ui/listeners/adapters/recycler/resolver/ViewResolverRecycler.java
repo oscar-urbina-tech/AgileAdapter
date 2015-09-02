@@ -1,11 +1,11 @@
-package com.agileandroid.ui.listeners.adapters.resolvers;
+package com.agileandroid.ui.listeners.adapters.recycler.resolver;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.agileandroid.ui.listeners.adapters.builders.ViewResolverRecyclerBuilder;
-import com.agileandroid.ui.listeners.adapters.holders.HolderRecycler;
+import com.agileandroid.ui.listeners.adapters.recycler.builder.ViewResolverRecyclerBuilder;
+import com.agileandroid.ui.listeners.adapters.recycler.holder.HolderRecycler;
 
 /**
  * Created by oscar.urbina on 8/28/15.

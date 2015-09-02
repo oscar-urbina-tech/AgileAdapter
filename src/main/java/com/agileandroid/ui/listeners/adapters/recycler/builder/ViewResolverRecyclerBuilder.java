@@ -1,4 +1,4 @@
-package com.agileandroid.ui.listeners.adapters.builders;
+package com.agileandroid.ui.listeners.adapters.recycler.builder;
 
 import android.view.ViewGroup;
 

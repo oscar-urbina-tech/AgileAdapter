@@ -1,8 +1,8 @@
-package com.agileandroid.ui.listeners.adapters.dto;
+package com.agileandroid.ui.listeners.adapters.view.dto;
 
 import android.content.Context;
 
-import com.agileandroid.ui.listeners.adapters.holders.HolderRecycler;
+import com.agileandroid.ui.listeners.adapters.recycler.holder.HolderRecycler;
 
 /**
  * Created by oscar.urbina on 8/28/15.
