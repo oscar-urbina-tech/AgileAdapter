@@ -2,23 +2,23 @@ package com.agileandroid.ui.listeners.adapters.builders;
 
 import android.content.Context;
 
-import com.agileandroid.ui.listeners.adapters.holders.RecyclerHolder;
+import com.agileandroid.ui.listeners.adapters.holders.HolderRecycler;
 
 /**
  * The type Populator builder.
  *
  * @param <T> the type parameter
  */
-public class PopulatorBuilder<T> {
+public class AgileRecyclerBuilder<T> {
 
     private Context context;
     private T item;
-    private RecyclerHolder recyclerHolder;
+    private HolderRecycler holderRecycler;
 
-    private PopulatorBuilder(Builder<T> builder) {
+    private AgileRecyclerBuilder(Builder<T> builder) {
         this.context = builder.getContext();
         this.item = builder.item;
-        this.recyclerHolder = builder.getRecyclerHolder();
+        this.holderRecycler = builder.getHolderRecycler();
     }
 
     /**
@@ -44,8 +44,8 @@ public class PopulatorBuilder<T> {
      *
      * @return the recycler holder
      */
-    public RecyclerHolder getRecyclerHolder() {
-        return recyclerHolder;
+    public HolderRecycler getHolderRecycler() {
+        return holderRecycler;
     }
 
     /**
@@ -56,14 +56,14 @@ public class PopulatorBuilder<T> {
     public static class Builder<T> {
         private Context context;
         private T item;
-        private RecyclerHolder recyclerHolder;
+        private HolderRecycler holderRecycler;
         /**
          * Instantiates a new Builder.
          *
-         * @param recyclerHolder the recycler holder
+         * @param holderRecycler the recycler holder
          */
-        public Builder(RecyclerHolder recyclerHolder) {
-            this.recyclerHolder = recyclerHolder;
+        public Builder(HolderRecycler holderRecycler) {
+            this.holderRecycler = holderRecycler;
         }
 
         /**
@@ -101,8 +101,8 @@ public class PopulatorBuilder<T> {
             return this;
         }
 
-        private RecyclerHolder getRecyclerHolder() {
-            return recyclerHolder;
+        private HolderRecycler getHolderRecycler() {
+            return holderRecycler;
         }
 
         /**
@@ -110,8 +110,8 @@ public class PopulatorBuilder<T> {
          *
          * @return the populator builder
          */
-        public PopulatorBuilder<T> build() {
-            return new PopulatorBuilder<T>(this);
+        public AgileRecyclerBuilder<T> build() {
+            return new AgileRecyclerBuilder<T>(this);
         }
     }
 }

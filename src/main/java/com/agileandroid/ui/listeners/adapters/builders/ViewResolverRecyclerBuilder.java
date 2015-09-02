@@ -5,13 +5,13 @@ import android.view.ViewGroup;
 /**
  * The type Recycler view resolver builder.
  */
-public class RecyclerViewResolverBuilder{
+public class ViewResolverRecyclerBuilder {
 
     private ViewGroup parent;
     private int itemViewType;
     private Class item;
 
-    private RecyclerViewResolverBuilder(Builder builder) {
+    private ViewResolverRecyclerBuilder(Builder builder) {
         this.parent = builder.getParent();
         this.itemViewType = builder.getItemViewType();
         this.item = builder.getItem();
@@ -70,8 +70,8 @@ public class RecyclerViewResolverBuilder{
          *
          * @return the recycler view resolver builder
          */
-        public RecyclerViewResolverBuilder build() {
-            return new RecyclerViewResolverBuilder(this);
+        public ViewResolverRecyclerBuilder build() {
+            return new ViewResolverRecyclerBuilder(this);
         }
 
         private ViewGroup getParent() {
