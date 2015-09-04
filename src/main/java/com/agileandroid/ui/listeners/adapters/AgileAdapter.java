@@ -37,19 +37,9 @@ public class AgileAdapter extends BaseAdapter {
      * @param itemList the item list
      * @param agileAdapterDTO the agile adapter dTO
      */
-    //TODO::Refactor AgilDTO to View
     public AgileAdapter(List itemList, AgileAdapterDTO agileAdapterDTO) {
         this.itemList = itemList;
         this.agileAdapterDTO = agileAdapterDTO;
-    }
-
-    /**
-     * Sets posts list.
-     *
-     * @param itemList the posts list
-     */
-    public void setItemList(List itemList) {
-        this.itemList = itemList;
     }
 
     /**
@@ -153,4 +143,16 @@ public class AgileAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
+    /**
+     * Update posts list.
+     *
+     * @param newItemList the new item list
+     */
+    public void appendNewItemList(List<Object> newItemList){
+
+        for(Object item : newItemList){
+            this.itemList.add(item);
+        }
+        notifyDataSetChanged();
+    }
 }

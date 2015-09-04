@@ -40,16 +40,6 @@ public class AgileRecyclerAdapter extends RecyclerView.Adapter<HolderRecycler>{
         this.agileAdapterDTORecycler = agileAdapterDTORecycler;
     }
 
-    /**
-     * Sets posts list.
-     *
-     * @param itemList the posts list
-     */
-    public void setItemList(List itemList) {
-        this.itemList = itemList;
-    }
-
-
     /*
     @Override
     public int getItemViewType(int position) {
@@ -87,22 +77,19 @@ public class AgileRecyclerAdapter extends RecyclerView.Adapter<HolderRecycler>{
 
         if(this.agileAdapterDTORecycler.getInteractor() != null){
 
-            this.handleCustomInteractions(holder, currentPostItem);
+            this.handleCustomInteractions(agileRecyclerBuilder);
         }
     }
 
     /**
      * Add listeners to several view interactable items in current view
      *
-     * @param holder Current holder element
-     * @param currentItem Current Post
+     * @param agileRecyclerBuilder agileRecyclerBuilder Current holder element
      */
-    private void handleCustomInteractions(final HolderRecycler holder, final Object currentItem) {
-
-        final InteractorDTO<Object> interactorDTO = new InteractorDTO<>(currentItem, holder, this.context);
+    private void handleCustomInteractions(AgileRecyclerBuilder agileRecyclerBuilder) {
 
         Interactor interactor = this.agileAdapterDTORecycler.getInteractor();
-        interactor.setInteraction(interactorDTO);
+        interactor.setInteraction(agileRecyclerBuilder);
     }
 
     @Override
