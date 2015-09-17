@@ -2,6 +2,7 @@ package com.agileandroid.ui.listeners.adapters.recycler;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.ViewGroup;
 
 import com.agileandroid.ui.listeners.adapters.recycler.populator.Populator;
@@ -26,6 +27,7 @@ public class AgileRecyclerAdapter extends RecyclerView.Adapter<HolderRecycler>{
      */
     protected List itemList;
     private Context context;
+    private static final String LOG_TAG = AgileRecyclerAdapter.class.getSimpleName();
 
     private AgileAdapterDTORecycler agileAdapterDTORecycler;
 
@@ -104,7 +106,7 @@ public class AgileRecyclerAdapter extends RecyclerView.Adapter<HolderRecycler>{
      */
     public void addItem(Object item) {
         this.itemList.add(item);
-        notifyDataSetChanged();
+        super.notifyDataSetChanged();
     }
 
     /**
@@ -117,7 +119,18 @@ public class AgileRecyclerAdapter extends RecyclerView.Adapter<HolderRecycler>{
         for(Object item : newItemList){
             this.itemList.add(item);
         }
-        notifyDataSetChanged();
+        super.notifyDataSetChanged();
+    }
+
+    public void removeItemList(Object item){
+
+        if(this.itemList.contains(item)){
+            this.itemList.remove(item);
+            super.notifyDataSetChanged();
+            return;
+        }
+
+        Log.i(LOG_TAG, "Object not present, couldn´t remove");
     }
 
     /**
@@ -125,6 +138,6 @@ public class AgileRecyclerAdapter extends RecyclerView.Adapter<HolderRecycler>{
      */
     public void clearItemList() {
         this.itemList.clear();
-        notifyDataSetChanged();
+        super.notifyDataSetChanged();
     }
 }
