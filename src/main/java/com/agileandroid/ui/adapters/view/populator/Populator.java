@@ -1,6 +1,6 @@
-package com.agileandroid.ui.listeners.adapters.view.populator;
+package com.agileandroid.ui.adapters.view.populator;
 
-import com.agileandroid.ui.listeners.adapters.recycler.builder.AgileRecyclerBuilder;
+import com.agileandroid.ui.adapters.recycler.builder.AgileRecyclerBuilder;
 
 /**
  * Created by oscar.urbina on 9/2/15.

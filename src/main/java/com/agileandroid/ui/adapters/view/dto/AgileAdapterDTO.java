@@ -1,9 +1,9 @@
-package com.agileandroid.ui.listeners.adapters.view.dto;
+package com.agileandroid.ui.adapters.view.dto;
 
 
-import com.agileandroid.ui.listeners.adapters.view.interactor.Interactor;
-import com.agileandroid.ui.listeners.adapters.view.populator.Populator;
-import com.agileandroid.ui.listeners.adapters.view.resolver.ViewResolver;
+import com.agileandroid.ui.adapters.view.interactor.Interactor;
+import com.agileandroid.ui.adapters.view.populator.Populator;
+import com.agileandroid.ui.adapters.view.resolver.ViewResolver;
 
 /**
  * Created by oscar.urbina on 8/28/15.

@@ -1,8 +1,8 @@
-package com.agileandroid.ui.listeners.adapters.recycler.builder;
+package com.agileandroid.ui.adapters.recycler.builder;
 
 import android.content.Context;
 
-import com.agileandroid.ui.listeners.adapters.recycler.holder.HolderRecycler;
+import com.agileandroid.ui.adapters.recycler.holder.HolderRecycler;
 
 /**
  * The type Populator builder.

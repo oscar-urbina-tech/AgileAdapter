@@ -1,18 +1,20 @@
-package com.agileandroid.ui.listeners.adapters.recycler.dto;
+package com.agileandroid.ui.adapters.recycler.dto;
 
-import com.agileandroid.ui.listeners.adapters.recycler.interactor.Interactor;
+import com.agileandroid.ui.adapters.TypableView;
+import com.agileandroid.ui.adapters.recycler.interactor.Interactor;
 
-import com.agileandroid.ui.listeners.adapters.recycler.populator.Populator;
-import com.agileandroid.ui.listeners.adapters.recycler.resolver.ViewResolverRecycler;
+import com.agileandroid.ui.adapters.recycler.populator.Populator;
+import com.agileandroid.ui.adapters.recycler.resolver.ViewResolverRecycler;
 
 /**
  * Created by oscar.urbina on 8/28/15.
  */
-public class AgileAdapterDTORecycler{
+public class AgileAdapterDTORecycler implements TypableView{
 
     private Populator populator;
     private ViewResolverRecycler viewResolverRecycler;
     private Interactor interactor;
+    private int itemViewType;
 
     /**
      * Instantiates a new Agile adapter dTO.
@@ -40,6 +42,33 @@ public class AgileAdapterDTORecycler{
     }
 
     /**
+     * Instantiates a new Agile adapter dTO.
+     *
+     * @param viewResolverRecycler the recycler view resolver
+     * @param populator the populator
+     */
+    public AgileAdapterDTORecycler(ViewResolverRecycler viewResolverRecycler, Populator populator, int itemViewType) {
+        this.populator = populator;
+        this.viewResolverRecycler = viewResolverRecycler;
+        this.itemViewType = itemViewType;
+    }
+
+    /**
+     * Instantiates a new Agile adapter dTO.
+     *
+     * @param viewResolverRecycler the recycler view resolver
+     * @param populator the populator
+     * @param interactor the interactor
+     */
+    public AgileAdapterDTORecycler(ViewResolverRecycler viewResolverRecycler, Populator populator, Interactor interactor, int itemViewType) {
+
+        this.populator = populator;
+        this.viewResolverRecycler = viewResolverRecycler;
+        this.interactor = interactor;
+        this.itemViewType = itemViewType;
+    }
+
+    /**
      * Gets populator.
      *
      * @return the populator
@@ -64,5 +93,10 @@ public class AgileAdapterDTORecycler{
      */
     public Interactor getInteractor() {
         return interactor;
+    }
+
+    @Override
+    public int getViewType() {
+        return this.itemViewType;
     }
 }

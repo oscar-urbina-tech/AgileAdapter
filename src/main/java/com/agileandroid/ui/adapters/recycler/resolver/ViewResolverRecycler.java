@@ -1,16 +1,16 @@
-package com.agileandroid.ui.listeners.adapters.recycler.resolver;
+package com.agileandroid.ui.adapters.recycler.resolver;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.agileandroid.ui.listeners.adapters.recycler.builder.ViewResolverRecyclerBuilder;
-import com.agileandroid.ui.listeners.adapters.recycler.holder.HolderRecycler;
+import com.agileandroid.ui.adapters.recycler.builder.ViewResolverRecyclerBuilder;
+import com.agileandroid.ui.adapters.recycler.holder.HolderRecycler;
 
 /**
  * Created by oscar.urbina on 8/28/15.
  */
-public abstract class ViewResolverRecycler {
+public abstract class ViewResolverRecycler{
 
     /**
      * The View resolver builder.
@@ -38,7 +38,6 @@ public abstract class ViewResolverRecycler {
 
         return getHolder(layoutInflater.inflate(this.getLayoutResource(), this.viewResolverRecyclerBuilder.getParent(), false));
     }
-
 
     /**
      * Gets layout resource.

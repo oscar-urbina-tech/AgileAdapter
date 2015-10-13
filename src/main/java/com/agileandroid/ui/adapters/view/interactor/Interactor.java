@@ -1,7 +1,7 @@
-package com.agileandroid.ui.listeners.adapters.view.interactor;
+package com.agileandroid.ui.adapters.view.interactor;
 
 import com.agileandroid.ui.listeners.BaseOnClickListener;
-import com.agileandroid.ui.listeners.adapters.view.dto.InteractorDTO;
+import com.agileandroid.ui.adapters.view.dto.InteractorDTO;
 
 import java.util.List;
 

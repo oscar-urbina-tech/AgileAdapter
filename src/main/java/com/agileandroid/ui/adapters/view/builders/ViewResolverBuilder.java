@@ -1,9 +1,9 @@
-package com.agileandroid.ui.listeners.adapters.view.builders;
+package com.agileandroid.ui.adapters.view.builders;
 
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.agileandroid.ui.listeners.adapters.view.dto.AgileAdapterDTO;
+import com.agileandroid.ui.adapters.view.dto.AgileAdapterDTO;
 
 /**
  * Created by oscar.urbina on 7/17/15.

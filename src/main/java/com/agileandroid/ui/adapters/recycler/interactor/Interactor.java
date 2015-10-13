@@ -1,11 +1,11 @@
-package com.agileandroid.ui.listeners.adapters.recycler.interactor;
+package com.agileandroid.ui.adapters.recycler.interactor;
 
-import com.agileandroid.ui.listeners.adapters.recycler.builder.AgileRecyclerBuilder;
+import com.agileandroid.ui.adapters.recycler.builder.AgileRecyclerBuilder;
 
 /**
  * Created by oscar.urbina on 8/28/15.
  */
-public abstract class Interactor {
+public abstract class Interactor{
 
     /**
      * Sets interaction.
