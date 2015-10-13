@@ -101,8 +101,7 @@ public class AgileRecyclerAdapter extends RecyclerView.Adapter<HolderRecycler>{
 
                 Populator populator = agileAdapterDTORecycler.getPopulator();
                 populator.populate(agileRecyclerBuilder);
-         //       this.handleCustomInteractions(agileRecyclerBuilder, position);
-                return;
+                break;
             }
         }
 
