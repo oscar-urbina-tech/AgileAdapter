@@ -7,6 +7,7 @@ import android.view.View;
 import com.agileandroid.ui.adapters.recycler.builder.AgileRecyclerBuilder;
 import com.agileandroid.ui.adapters.recycler.holder.HolderRecycler;
 import com.agileandroid.ui.adapters.view.builders.ViewResolverBuilder;
+import com.agileandroid.ui.adapters.view.interactor.Interactor;
 import com.agileandroid.ui.adapters.view.populator.Populator;
 
 /**
@@ -62,6 +63,11 @@ public abstract class ViewResolver {
                 .setItem(viewResolverBuilder.getItem()).build();
 
         populator.populate(agileRecyclerBuilder);
+
+        if(viewResolverBuilder.getAgileAdapterDTO().getInteractor() != null){
+            Interactor interactor = viewResolverBuilder.getAgileAdapterDTO().getInteractor();
+            interactor.setInteraction(agileRecyclerBuilder);
+        }
 
         return convertView;
     }
