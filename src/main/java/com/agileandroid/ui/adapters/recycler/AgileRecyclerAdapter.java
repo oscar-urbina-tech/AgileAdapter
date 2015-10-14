@@ -117,8 +117,6 @@ public class AgileRecyclerAdapter extends RecyclerView.Adapter<HolderRecycler>{
                 }
             }
         }
-
-        throw new IllegalStateException();
     }
 
     /**
