@@ -1,6 +1,5 @@
 package com.agileandroid.ui.adapters;
 
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -21,8 +20,10 @@ public class AgileAdapter extends BaseAdapter {
      * The Item list.
      */
     protected List<Object> itemList;
-    private Context context;
 
+    /**
+     * The agile adapter dto
+     */
     private AgileAdapterDTO agileAdapterDTO;
 
     /**
