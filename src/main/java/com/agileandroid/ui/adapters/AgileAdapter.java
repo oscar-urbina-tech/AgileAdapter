@@ -13,13 +13,13 @@ import java.util.List;
 /**
  * Created by oscar.urbina on 7/9/15.
  */
-public class AgileAdapter extends BaseAdapter {
+public class AgileAdapter<T> extends BaseAdapter {
 
     private static final String LOG_TAG = AgileAdapter.class.getSimpleName();
     /**
      * The Item list.
      */
-    protected List<Object> itemList;
+    protected List<T> itemList;
 
     /**
      * The agile adapter dto
@@ -32,7 +32,7 @@ public class AgileAdapter extends BaseAdapter {
      * @param itemList the item list
      * @param agileAdapterDTO the agile adapter dTO
      */
-    public AgileAdapter(List itemList, AgileAdapterDTO agileAdapterDTO) {
+    public AgileAdapter(List<T> itemList, AgileAdapterDTO agileAdapterDTO) {
         this.itemList = itemList;
         this.agileAdapterDTO = agileAdapterDTO;
     }
@@ -107,7 +107,7 @@ public class AgileAdapter extends BaseAdapter {
 
         final int itemViewType = this.getItemViewType(position);
 
-        final Object item = this.itemList.get(position);
+        final T item = this.itemList.get(position);
 
         ViewResolverBuilder viewResolverBuilder =
                 new ViewResolverBuilder.Builder(convertView, parent, itemViewType, this.agileAdapterDTO)
@@ -125,7 +125,7 @@ public class AgileAdapter extends BaseAdapter {
      *
      * @param item the item
      */
-    public void addItem(Object item) {
+    public void addItem(T item) {
         this.itemList.add(item);
         notifyDataSetChanged();
     }
@@ -143,9 +143,9 @@ public class AgileAdapter extends BaseAdapter {
      *
      * @param newItemList the new item list
      */
-    public void appendNewItemList(List<Object> newItemList){
+    public void appendNewItemList(List<T> newItemList){
 
-        for(Object item : newItemList){
+        for(T item : newItemList){
             this.itemList.add(item);
         }
         notifyDataSetChanged();

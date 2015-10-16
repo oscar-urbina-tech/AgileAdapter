@@ -3,20 +3,21 @@ package com.agileandroid.ui.adapters.view.builders;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.agileandroid.ui.adapters.TypableView;
 import com.agileandroid.ui.adapters.view.dto.AgileAdapterDTO;
 
 /**
  * Created by oscar.urbina on 7/17/15.
  */
-public class ViewResolverBuilder {
+public class ViewResolverBuilder<T> {
 
     private View convertView;
     private ViewGroup parent;
     private int itemViewType;
-    private Object item;
+    private T item;
     private AgileAdapterDTO agileAdapterDTO;
 
-    private ViewResolverBuilder(Builder builder) {
+    private ViewResolverBuilder(Builder<T> builder) {
         this.convertView = builder.getConvertView();
         this.parent = builder.getParent();
         this.itemViewType = builder.getItemViewType();
@@ -65,20 +66,20 @@ public class ViewResolverBuilder {
      *
      * @return the item dTO
      */
-    public Object getItem() {
+    public T getItem() {
         return this.item;
     }
 
     /**
      * The type Builder.
      */
-    public static class Builder {
+    public static class Builder<T> {
 
         private View convertView;
         private ViewGroup parent;
 
         private int itemViewType;
-        private Object item;
+        private T item;
         private AgileAdapterDTO agileAdapterDTO;
 
         /**
@@ -111,7 +112,7 @@ public class ViewResolverBuilder {
          * @return the view resolver builder
          */
         public ViewResolverBuilder build() {
-            return new ViewResolverBuilder(this);
+            return new ViewResolverBuilder<>(this);
         }
 
         private View getConvertView() {
@@ -131,7 +132,7 @@ public class ViewResolverBuilder {
          *
          * @return the item dTO
          */
-        public Object getItem() {
+        public T getItem() {
             return item;
         }
 
@@ -141,7 +142,7 @@ public class ViewResolverBuilder {
          * @param item the item
          * @return the item dTO
          */
-        public Builder setItem(Object item) {
+        public Builder setItem(T item) {
             this.item = item;
             return this;
         }

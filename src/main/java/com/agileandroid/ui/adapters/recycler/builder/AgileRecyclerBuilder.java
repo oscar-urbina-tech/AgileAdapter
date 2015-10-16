@@ -2,6 +2,7 @@ package com.agileandroid.ui.adapters.recycler.builder;
 
 import android.content.Context;
 
+import com.agileandroid.ui.adapters.TypableView;
 import com.agileandroid.ui.adapters.recycler.holder.HolderRecycler;
 
 /**
@@ -15,9 +16,14 @@ public class AgileRecyclerBuilder<T> {
     private T item;
     private HolderRecycler holderRecycler;
 
+    /**
+     * Private AgileRecyclerBuilder
+     *
+     * @param builder
+     */
     private AgileRecyclerBuilder(Builder<T> builder) {
         this.context = builder.getContext();
-        this.item = builder.item;
+        this.item = builder.getItem();
         this.holderRecycler = builder.getHolderRecycler();
     }
 
@@ -57,6 +63,7 @@ public class AgileRecyclerBuilder<T> {
         private Context context;
         private T item;
         private HolderRecycler holderRecycler;
+
         /**
          * Instantiates a new Builder.
          *
@@ -81,11 +88,16 @@ public class AgileRecyclerBuilder<T> {
          * @param item the item
          * @return the item
          */
-        public Builder setItem(T item) {
+        public Builder<T> setItem(T item) {
             this.item = item;
             return this;
         }
 
+        /**
+         * Gets context.
+         *
+         * @return the context
+         */
         private Context getContext() {
             return context;
         }
@@ -96,11 +108,16 @@ public class AgileRecyclerBuilder<T> {
          * @param context the context
          * @return the context
          */
-        public Builder setContext(Context context) {
+        public Builder<T> setContext(Context context) {
             this.context = context;
             return this;
         }
 
+        /**
+         * Gets recycler holder.
+         *
+         * @return the recycler holder
+         */
         private HolderRecycler getHolderRecycler() {
             return holderRecycler;
         }
@@ -111,7 +128,7 @@ public class AgileRecyclerBuilder<T> {
          * @return the populator builder
          */
         public AgileRecyclerBuilder<T> build() {
-            return new AgileRecyclerBuilder<T>(this);
+            return new AgileRecyclerBuilder<>(this);
         }
     }
 }

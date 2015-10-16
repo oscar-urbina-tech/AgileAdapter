@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.ViewGroup;
 
 import com.agileandroid.ui.adapters.TypableView;
+
 import com.agileandroid.ui.adapters.recycler.populator.Populator;
 import com.agileandroid.ui.adapters.recycler.builder.AgileRecyclerBuilder;
 import com.agileandroid.ui.adapters.recycler.builder.ViewResolverRecyclerBuilder;
@@ -23,15 +24,26 @@ import java.util.List;
 /**
  * Created by oscar.urbina on 8/28/15.
  */
-public class AgileRecyclerAdapter extends RecyclerView.Adapter<HolderRecycler>{
+public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Adapter<HolderRecycler>{
+
+    /**
+     * The log tag
+     */
+    private static final String LOG_TAG = AgileRecyclerAdapter.class.getSimpleName();
 
     /**
      * The Item list.
      */
-    protected List<Object> itemList;
-    private Context context;
-    private static final String LOG_TAG = AgileRecyclerAdapter.class.getSimpleName();
+    protected List<T> itemList;
 
+    /**
+     * The ViewGroup parent context
+     */
+    private Context context;
+
+    /**
+     * The agile adapter DTO Recycler list
+     */
     private List<AgileAdapterDTORecycler> agileAdapterDTORecyclerList;
 
     /**
@@ -40,7 +52,7 @@ public class AgileRecyclerAdapter extends RecyclerView.Adapter<HolderRecycler>{
      * @param itemList the item list
      * @param agileAdapterDTORecycler the agile adapter dTO
      */
-    public AgileRecyclerAdapter(List itemList, AgileAdapterDTORecycler agileAdapterDTORecycler) {
+    public AgileRecyclerAdapter(List<T> itemList, AgileAdapterDTORecycler agileAdapterDTORecycler) {
         this.itemList = itemList;
         this.agileAdapterDTORecyclerList = new ArrayList<>();
         this.agileAdapterDTORecyclerList.add(agileAdapterDTORecycler);
@@ -52,7 +64,7 @@ public class AgileRecyclerAdapter extends RecyclerView.Adapter<HolderRecycler>{
      * @param itemList the item list
      * @param agileAdapterDTORecyclerList the agile adapter dTO
      */
-    public AgileRecyclerAdapter(List itemList, List<AgileAdapterDTORecycler> agileAdapterDTORecyclerList) {
+    public AgileRecyclerAdapter(List<T> itemList, List<AgileAdapterDTORecycler> agileAdapterDTORecyclerList) {
         this.itemList = itemList;
         this.agileAdapterDTORecyclerList = agileAdapterDTORecyclerList;
     }
@@ -60,7 +72,18 @@ public class AgileRecyclerAdapter extends RecyclerView.Adapter<HolderRecycler>{
 
     @Override
     public int getItemViewType(int position) {
-        return ((TypableView)this.itemList.get(position)).getViewType();
+
+        try{
+            TypableView typableView = this.itemList.get(position);
+            return typableView.getViewType();
+        }
+        catch(ClassCastException e){
+            Log.e(LOG_TAG, "Your model object"
+                    + this.itemList.get(position).getClass().getSimpleName()
+                    + " must implement TypableView interface");
+        }
+
+        return 0;
     }
 
     @Override
@@ -82,18 +105,18 @@ public class AgileRecyclerAdapter extends RecyclerView.Adapter<HolderRecycler>{
                 return viewResolverRecycler.resolve();
             }
         }
-
+        // TODO: 10/15/15 launch custom exception if viewType does not match agileAdapterDTORecycler.getViewType()
         throw new IllegalStateException();
     }
 
     @Override
     public void onBindViewHolder(HolderRecycler holder, final int position) {
 
-        final Object currentPostItem = this.itemList.get(position);
+        final T listItem = this.itemList.get(position);
 
-        AgileRecyclerBuilder agileRecyclerBuilder = new AgileRecyclerBuilder.Builder(holder)
+        final AgileRecyclerBuilder<T> agileRecyclerBuilder = new AgileRecyclerBuilder.Builder<T>(holder)
                 .setContext(this.context)
-                .setItem(currentPostItem)
+                .setItem(listItem)
                 .build();
 
         for(AgileAdapterDTORecycler agileAdapterDTORecycler : this.agileAdapterDTORecyclerList){
@@ -106,18 +129,7 @@ public class AgileRecyclerAdapter extends RecyclerView.Adapter<HolderRecycler>{
             }
         }
 
-        for(AgileAdapterDTORecycler agileAdapterDTORecycler : this.agileAdapterDTORecyclerList){
-
-            if(agileAdapterDTORecycler.getInteractor() != null){
-
-                Interactor interactor = agileAdapterDTORecycler.getInteractor();
-
-                if(this.getItemViewType(position) == agileAdapterDTORecycler.getViewType()){
-                    interactor.setInteraction(agileRecyclerBuilder);
-                    return;
-                }
-            }
-        }
+        this.handleCustomInteractions(agileRecyclerBuilder, position);
     }
 
     /**
@@ -136,8 +148,6 @@ public class AgileRecyclerAdapter extends RecyclerView.Adapter<HolderRecycler>{
                 return;
             }
         }
-
-        throw new IllegalStateException();
     }
 
     @Override
@@ -150,7 +160,7 @@ public class AgileRecyclerAdapter extends RecyclerView.Adapter<HolderRecycler>{
      *
      * @param item the item
      */
-    public void addItem(Object item) {
+    public void addItem(T item) {
         this.itemList.add(item);
         super.notifyDataSetChanged();
     }
@@ -160,15 +170,20 @@ public class AgileRecyclerAdapter extends RecyclerView.Adapter<HolderRecycler>{
      *
      * @param newItemList the new item list
      */
-    public void appendNewItemList(List<?> newItemList){
+    public void appendNewItemList(List<T> newItemList){
 
-        for(Object item : newItemList){
+        for(T item : newItemList){
             this.itemList.add(item);
         }
         super.notifyDataSetChanged();
     }
 
-    public void removeItemList(Object item){
+    /**
+     * Removes an item from current list
+     *
+     * @param item the item to be removed
+     */
+    public void removeItemList(T item){
 
         if(this.itemList.contains(item)){
             this.itemList.remove(item);
