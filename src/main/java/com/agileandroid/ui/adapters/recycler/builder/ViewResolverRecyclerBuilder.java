@@ -9,12 +9,10 @@ public class ViewResolverRecyclerBuilder {
 
     private ViewGroup parent;
     private int itemViewType;
-    private Class item;
 
     private ViewResolverRecyclerBuilder(Builder builder) {
         this.parent = builder.getParent();
         this.itemViewType = builder.getItemViewType();
-        this.item = builder.getItem();
     }
 
     /**
@@ -36,23 +34,12 @@ public class ViewResolverRecyclerBuilder {
     }
 
     /**
-     * Gets item.
-     *
-     * @return the item
-     */
-    public Class getItem() {
-        return this.item;
-    }
-
-    /**
      * The type Builder.
      */
-    public static class Builder {
+    public static class Builder<T> {
 
         private ViewGroup parent;
-
         private int itemViewType;
-        private Class item;
 
         /**
          * Instantiates a new Builder.
@@ -80,26 +67,6 @@ public class ViewResolverRecyclerBuilder {
 
         private int getItemViewType() {
             return itemViewType;
-        }
-
-        /**
-         * Gets item.
-         *
-         * @return the item
-         */
-        public Class getItem() {
-            return this.item;
-        }
-
-        /**
-         * Sets item.
-         *
-         * @param item the item
-         * @return the item
-         */
-        public Builder setItem(Class item) {
-            this.item = item;
-            return this;
         }
     }
 

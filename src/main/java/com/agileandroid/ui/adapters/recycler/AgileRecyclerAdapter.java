@@ -123,7 +123,7 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
 
             if(this.getItemViewType(position) == agileAdapterDTORecycler.getViewType()){
 
-                Populator populator = agileAdapterDTORecycler.getPopulator();
+                final Populator populator = agileAdapterDTORecycler.getPopulator();
                 populator.populate(agileRecyclerBuilder);
                 break;
             }
