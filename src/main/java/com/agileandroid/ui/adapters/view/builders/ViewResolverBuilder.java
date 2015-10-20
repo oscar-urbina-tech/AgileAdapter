@@ -3,7 +3,6 @@ package com.agileandroid.ui.adapters.view.builders;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.agileandroid.ui.adapters.TypableView;
 import com.agileandroid.ui.adapters.view.dto.AgileAdapterDTO;
 
 /**

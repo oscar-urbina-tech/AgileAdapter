@@ -55,7 +55,7 @@ public class AgileAdapter<T> extends BaseAdapter {
      * @return The data at the specified position.
      */
     @Override
-    public Object getItem(int position) {
+    public T getItem(int position) {
         return this.itemList.get(position);
     }
 
