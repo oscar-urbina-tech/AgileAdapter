@@ -2,8 +2,8 @@ package com.agileandroid.ui.adapters.recycler.resolver;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
-import com.agileandroid.ui.adapters.recycler.builder.ViewResolverRecyclerBuilder;
 import com.agileandroid.ui.adapters.recycler.holder.HolderRecycler;
 
 /**
@@ -12,30 +12,16 @@ import com.agileandroid.ui.adapters.recycler.holder.HolderRecycler;
 public abstract class ViewResolverRecycler{
 
     /**
-     * The View resolver builder.
-     */
-    private ViewResolverRecyclerBuilder viewResolverRecyclerBuilder;
-
-    /**
-     * Sets recycler view resolver builder.
-     *
-     * @param viewResolverRecyclerBuilder the recycler view resolver builder
-     */
-    public void setViewResolverRecyclerBuilder(ViewResolverRecyclerBuilder viewResolverRecyclerBuilder) {
-        this.viewResolverRecyclerBuilder = viewResolverRecyclerBuilder;
-    }
-
-    /**
      * Invoke banner gA view resolver.
      *
      * @return the banner gA view resolver
      */
-    public HolderRecycler resolve() {
+    public HolderRecycler resolve(final ViewGroup parent) {
 
         final LayoutInflater layoutInflater
-                = LayoutInflater.from(this.viewResolverRecyclerBuilder.getParent().getContext());
+                = LayoutInflater.from(parent.getContext());
 
-        return getHolder(layoutInflater.inflate(this.getLayoutResource(), this.viewResolverRecyclerBuilder.getParent(), false));
+        return getHolder(layoutInflater.inflate(this.getLayoutResource(), parent, false));
     }
 
     /**

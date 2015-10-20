@@ -10,7 +10,7 @@ import com.agileandroid.ui.adapters.TypableView;
 
 import com.agileandroid.ui.adapters.recycler.populator.Populator;
 import com.agileandroid.ui.adapters.recycler.builder.AgileRecyclerBuilder;
-import com.agileandroid.ui.adapters.recycler.builder.ViewResolverRecyclerBuilder;
+
 import com.agileandroid.ui.adapters.recycler.dto.AgileAdapterDTORecycler;
 
 import com.agileandroid.ui.adapters.recycler.holder.HolderRecycler;
@@ -74,8 +74,7 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
     public int getItemViewType(int position) {
 
         try{
-            TypableView typableView = this.itemList.get(position);
-            return typableView.getViewType();
+            return this.itemList.get(position).getViewType();
         }
         catch(ClassCastException e){
             Log.e(LOG_TAG, "Your model object"
@@ -91,18 +90,13 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
 
         this.context = parent.getContext();
 
-        final ViewResolverRecyclerBuilder viewResolverRecyclerBuilder =
-                new ViewResolverRecyclerBuilder.Builder(parent, viewType)
-                        .build();
-
         for(AgileAdapterDTORecycler agileAdapterDTORecycler : this.agileAdapterDTORecyclerList){
 
             if(viewType == agileAdapterDTORecycler.getViewType()){
 
                 final ViewResolverRecycler viewResolverRecycler = agileAdapterDTORecycler.getViewResolverRecycler();
-                viewResolverRecycler.setViewResolverRecyclerBuilder(viewResolverRecyclerBuilder);
 
-                return viewResolverRecycler.resolve();
+                return viewResolverRecycler.resolve(parent);
             }
         }
         // TODO: 10/15/15 launch custom exception if viewType does not match agileAdapterDTORecycler.getViewType()
