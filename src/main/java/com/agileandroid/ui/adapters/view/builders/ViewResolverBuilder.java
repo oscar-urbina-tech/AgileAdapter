@@ -7,6 +7,8 @@ import com.agileandroid.ui.adapters.view.dto.AgileAdapterDTO;
 
 /**
  * Created by oscar.urbina on 7/17/15.
+ *
+ * @param <T> the type parameter
  */
 public class ViewResolverBuilder<T> {
 
@@ -71,6 +73,8 @@ public class ViewResolverBuilder<T> {
 
     /**
      * The type Builder.
+     *
+     * @param <T> the type parameter
      */
     public static class Builder<T> {
 
@@ -110,7 +114,7 @@ public class ViewResolverBuilder<T> {
          *
          * @return the view resolver builder
          */
-        public ViewResolverBuilder build() {
+        public ViewResolverBuilder<T> build() {
             return new ViewResolverBuilder<>(this);
         }
 
@@ -141,7 +145,7 @@ public class ViewResolverBuilder<T> {
          * @param item the item
          * @return the item dTO
          */
-        public Builder setItem(T item) {
+        public Builder<T> setItem(T item) {
             this.item = item;
             return this;
         }

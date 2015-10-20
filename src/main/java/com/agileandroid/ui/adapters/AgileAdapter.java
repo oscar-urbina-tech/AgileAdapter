@@ -15,7 +15,11 @@ import java.util.List;
  */
 public class AgileAdapter<T> extends BaseAdapter {
 
+    /**
+     * The log tag
+     */
     private static final String LOG_TAG = AgileAdapter.class.getSimpleName();
+
     /**
      * The Item list.
      */
@@ -109,15 +113,14 @@ public class AgileAdapter<T> extends BaseAdapter {
 
         final T item = this.itemList.get(position);
 
-        ViewResolverBuilder viewResolverBuilder =
-                new ViewResolverBuilder.Builder(convertView, parent, itemViewType, this.agileAdapterDTO)
+        final ViewResolverBuilder<T> viewResolverBuilder =
+                new ViewResolverBuilder.Builder<T>(convertView, parent, itemViewType, this.agileAdapterDTO)
                         .setItem(item)
                         .build();
 
-        ViewResolver viewResolver = this.agileAdapterDTO.getViewResolver();
-        viewResolver.setViewResolverBuilder(viewResolverBuilder);
+        final ViewResolver viewResolver = this.agileAdapterDTO.getViewResolver();
 
-        return viewResolver.resolve();
+        return viewResolver.resolve(viewResolverBuilder);
     }
 
     /**
