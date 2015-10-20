@@ -1,6 +1,5 @@
 package com.agileandroid.ui.adapters.recycler.resolver;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -33,8 +32,8 @@ public abstract class ViewResolverRecycler{
      */
     public HolderRecycler resolve() {
 
-        final LayoutInflater layoutInflater = (LayoutInflater)
-                this.viewResolverRecyclerBuilder.getParent().getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final LayoutInflater layoutInflater
+                = LayoutInflater.from(this.viewResolverRecyclerBuilder.getParent().getContext());
 
         return getHolder(layoutInflater.inflate(this.getLayoutResource(), this.viewResolverRecyclerBuilder.getParent(), false));
     }
