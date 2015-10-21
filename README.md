@@ -39,24 +39,61 @@ Our main object AgileAdapter, receives in the constructor 2 parameters:
    - A reference of an object that implements the interface <List> 
    - A reference to an object AgileAdapterDTO.
 
-## How to
+## How to?
 In order to start working with this component, first we need to define our view to work with, our ViewResolver:
  
-You must create a class that extends ViewResolver, for example:
+You must create a class, for example:
 
-    public class ItemViewResolver extends ViewResolver{
+    public class ItemViewResolver{
     
     }
     
-ViewResolver is an abstract class thats why now you need to override the next two methods:
+Now create your holder pattern class (If you want, you can create an inner class if that makes you feel confortable) or can create
+a package like ui.adapters.holders and create your holder pattern class that must **extends HolderRecycler**
+
+    public class ItemViewResolver{
+    
+        /**
+        * The type Item holder.
+        */
+        public static final class ItemHolder extends HolderRecycler {
+        
+            private TextView titleView;
+        
+            /**
+            * Instantiates a new Item holder.
+            *
+            * @param itemView the item view
+            */
+            public ItemHolder(View itemView) {
+                super(itemView);
+                this.titleView = (TextView) itemView.findViewById(R.id.item_title);
+            }
+        
+            /**
+            * Gets title view.
+            *
+            * @return the title view
+            */
+            public TextView getTitleView() {
+                return titleView;
+            }
+        }
+    }
+
+Now you can start creating your holder.
+
+In order to create an association with our item layout, we must extend our view resolver to **extends ViewResolver**
+
+ViewResolver is an abstract class that´s why now you need to implement the next two methods:
 
     public class ItemViewResolver extends ViewResolver{
      
         /**
-        * Create a holder instance.
+        * Creates a holder instance.
         *
         * @param convertView the convert view
-        * @return the gA banner view
+        * @return the holder instance
         */
         @Override
         protected HolderRecycler getHolder(View convertView) {
@@ -74,4 +111,55 @@ ViewResolver is an abstract class thats why now you need to override the next tw
         }
     }
 
+Now our class looks like this:
+
+    public class ItemViewResolver extends ViewResolver {
     
+        /**
+         * Creates a holder instance.
+         *
+         * @param convertView the convert view
+         * @return the holder instance
+         */
+        @Override
+        protected HolderRecycler getHolder(View convertView) {
+            return new ItemHolder(convertView);
+        }
+    
+        /**
+         * Gets layout resource.
+         *
+         * @return the layout resource
+         */
+        @Override
+        protected int getLayoutResource() {
+            return R.layout.list_item_layout;
+        }
+    
+        /**
+         * The type Item holder.
+         */
+        public static final class ItemHolder extends HolderRecycler {
+    
+            private TextView titleView;
+    
+            /**
+             * Instantiates a new Item holder.
+             *
+             * @param itemView the item view
+             */
+            public ItemHolder(View itemView) {
+                super(itemView);
+                this.titleView = (TextView) itemView.findViewById(R.id.item_title);
+            }
+    
+            /**
+             * Gets title view.
+             *
+             * @return the title view
+             */
+            public TextView getTitleView() {
+                return titleView;
+            }
+        }
+    }
