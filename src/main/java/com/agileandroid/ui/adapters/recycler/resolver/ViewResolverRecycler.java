@@ -12,9 +12,9 @@ import com.agileandroid.ui.adapters.recycler.holder.HolderRecycler;
 public abstract class ViewResolverRecycler{
 
     /**
-     * Invoke banner gA view resolver.
+     * Resolves current view defined in getLayoutResource method.
      *
-     * @return the banner gA view resolver
+     * @return the holder with a view reference related to the layout resource
      */
     public HolderRecycler resolve(final ViewGroup parent) {
 
