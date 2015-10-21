@@ -83,9 +83,9 @@ a package like ui.adapters.holders and create your holder pattern class that mus
 
 Now you can start creating your holder.
 
-In order to create an association with our item layout, we must extend our view resolver to **extends ViewResolver**
+In order to create an association with our item layout, our view resolver class must **extends ViewResolver**
 
-ViewResolver is an abstract class that´s why now you need to implement the next two methods:
+ViewResolver is an abstract class. That´s why now you need to implement the next two methods:
 
     public class ItemViewResolver extends ViewResolver{
      
