@@ -43,8 +43,8 @@ public abstract class ViewResolver {
 
         final Populator populator = viewResolverBuilder.getAgileAdapterDTO().getPopulator();
 
-        final AgileAdapterBuilder<T> agileAdapterBuilder
-                = new AgileAdapterBuilder.Builder<T>(recyclerHolder)
+        final AgileAdapterBuilder agileAdapterBuilder
+                = new AgileAdapterBuilder.Builder<>(recyclerHolder)
                     .setContext(viewResolverBuilder.getParent().getContext())
                     .setItem(viewResolverBuilder.getItem()).build();
 
