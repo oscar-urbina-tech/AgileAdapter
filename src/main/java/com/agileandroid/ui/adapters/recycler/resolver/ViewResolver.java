@@ -9,7 +9,7 @@ import com.agileandroid.ui.adapters.recycler.holder.HolderRecycler;
 /**
  * Created by oscar.urbina on 8/28/15.
  */
-public abstract class ViewResolverRecycler{
+public abstract class ViewResolver {
 
     /**
      * Resolves current view defined in getLayoutResource method.
