@@ -11,12 +11,12 @@ import com.agileandroid.ui.adapters.TypableView;
 import com.agileandroid.ui.adapters.recycler.populator.Populator;
 import com.agileandroid.ui.adapters.recycler.builder.AgileRecyclerBuilder;
 
-import com.agileandroid.ui.adapters.recycler.dto.AgileAdapterDTORecycler;
+import com.agileandroid.ui.adapters.recycler.dto.AgileAdapterDTO;
 
 import com.agileandroid.ui.adapters.recycler.holder.HolderRecycler;
 import com.agileandroid.ui.adapters.recycler.interactor.Interactor;
 
-import com.agileandroid.ui.adapters.recycler.resolver.ViewResolverRecycler;
+import com.agileandroid.ui.adapters.recycler.resolver.ViewResolver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,29 +44,29 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
     /**
      * The agile adapter DTO Recycler list
      */
-    private List<AgileAdapterDTORecycler> agileAdapterDTORecyclerList;
+    private List<AgileAdapterDTO> agileAdapterDTOList;
 
     /**
      * Instantiates a new Agile recycler adapter.
      *
      * @param itemList the item list
-     * @param agileAdapterDTORecycler the agile adapter dTO
+     * @param agileAdapterDTO the agile adapter dTO
      */
-    public AgileRecyclerAdapter(List<T> itemList, AgileAdapterDTORecycler agileAdapterDTORecycler) {
+    public AgileRecyclerAdapter(List<T> itemList, AgileAdapterDTO agileAdapterDTO) {
         this.itemList = itemList;
-        this.agileAdapterDTORecyclerList = new ArrayList<>();
-        this.agileAdapterDTORecyclerList.add(agileAdapterDTORecycler);
+        this.agileAdapterDTOList = new ArrayList<>();
+        this.agileAdapterDTOList.add(agileAdapterDTO);
     }
 
     /**
      * Instantiates a new Agile recycler adapter.
      *
      * @param itemList the item list
-     * @param agileAdapterDTORecyclerList the agile adapter dTO
+     * @param agileAdapterDTOList the agile adapter dTO
      */
-    public AgileRecyclerAdapter(List<T> itemList, List<AgileAdapterDTORecycler> agileAdapterDTORecyclerList) {
+    public AgileRecyclerAdapter(List<T> itemList, List<AgileAdapterDTO> agileAdapterDTOList) {
         this.itemList = itemList;
-        this.agileAdapterDTORecyclerList = agileAdapterDTORecyclerList;
+        this.agileAdapterDTOList = agileAdapterDTOList;
     }
 
 
@@ -79,7 +79,9 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
         catch(ClassCastException e){
             Log.e(LOG_TAG, "Your model object"
                     + this.itemList.get(position).getClass().getSimpleName()
-                    + " must implement TypableView interface");
+                    + " must implement TypableView interface. \n Try: "
+                    + this.itemList.get(position).getClass().getSimpleName()
+                    + " implements TypableView");
         }
 
         return 0;
@@ -90,17 +92,16 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
 
         this.context = parent.getContext();
 
-        for(AgileAdapterDTORecycler agileAdapterDTORecycler : this.agileAdapterDTORecyclerList){
+        for(AgileAdapterDTO agileAdapterDTO : this.agileAdapterDTOList){
 
-            if(viewType == agileAdapterDTORecycler.getViewType()){
+            if(viewType == agileAdapterDTO.getViewType()){
 
-                final ViewResolverRecycler viewResolverRecycler = agileAdapterDTORecycler.getViewResolverRecycler();
-
-                return viewResolverRecycler.resolve(parent);
+                final ViewResolver viewResolver = agileAdapterDTO.getViewResolver();
+                return viewResolver.resolve(parent);
             }
         }
-        // TODO: 10/15/15 launch custom exception if viewType does not match agileAdapterDTORecycler.getViewType()
-        throw new IllegalStateException();
+
+        return new HolderRecycler(parent);
     }
 
     @Override
@@ -113,13 +114,12 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
                 .setItem(listItem)
                 .build();
 
-        for(AgileAdapterDTORecycler agileAdapterDTORecycler : this.agileAdapterDTORecyclerList){
+        for(AgileAdapterDTO agileAdapterDTO : this.agileAdapterDTOList){
 
-            if(this.getItemViewType(position) == agileAdapterDTORecycler.getViewType()){
+            if(this.getItemViewType(position) == agileAdapterDTO.getViewType()){
 
-                final Populator populator = agileAdapterDTORecycler.getPopulator();
+                final Populator populator = agileAdapterDTO.getPopulator();
                 populator.populate(agileRecyclerBuilder);
-                break;
             }
         }
 
@@ -133,13 +133,12 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
      */
     private void handleCustomInteractions(AgileRecyclerBuilder agileRecyclerBuilder, int position) {
 
-        for(AgileAdapterDTORecycler agileAdapterDTORecycler : this.agileAdapterDTORecyclerList){
+        for(AgileAdapterDTO agileAdapterDTO : this.agileAdapterDTOList){
 
-            Interactor interactor = agileAdapterDTORecycler.getInteractor();
+            Interactor interactor = agileAdapterDTO.getInteractor();
 
-            if(this.getItemViewType(position) == agileAdapterDTORecycler.getViewType()){
+            if(this.getItemViewType(position) == agileAdapterDTO.getViewType()){
                 interactor.setInteraction(agileRecyclerBuilder);
-                return;
             }
         }
     }
