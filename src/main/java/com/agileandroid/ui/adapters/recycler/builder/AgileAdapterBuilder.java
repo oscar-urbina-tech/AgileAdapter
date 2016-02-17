@@ -8,22 +8,32 @@ import com.agileandroid.ui.adapters.recycler.holder.HolderRecycler;
  * The type Populator builder.
  *
  * @param <T> the type parameter
+ * @param <H> the type parameter
  */
-public class AgileAdapterBuilder<T> {
+public class AgileAdapterBuilder<T, H extends HolderRecycler> {
 
+    /**
+     * The Context.
+     */
     private Context context;
+    /**
+     * The Item.
+     */
     private T item;
-    private HolderRecycler holderRecycler;
+    /**
+     * The Holder.
+     */
+    private H holder;
 
     /**
      * Private AgileRecyclerBuilder
      *
-     * @param builder
+     * @param builder the builder
      */
-    private AgileAdapterBuilder(Builder<T> builder) {
+    private AgileAdapterBuilder(Builder<T, H> builder) {
         this.context = builder.getContext();
         this.item = builder.getItem();
-        this.holderRecycler = builder.getHolderRecycler();
+        this.holder = builder.getHolderRecycler();
     }
 
     /**
@@ -49,26 +59,36 @@ public class AgileAdapterBuilder<T> {
      *
      * @return the recycler holder
      */
-    public HolderRecycler getHolderRecycler() {
-        return holderRecycler;
+    public H getHolder() {
+        return holder;
     }
 
     /**
      * The type Builder.
      *
      * @param <T> the type parameter
+     * @param <H> the type parameter
      */
-    public static class Builder<T> {
+    public static class Builder<T, H extends HolderRecycler> {
+        /**
+         * The Context.
+         */
         private Context context;
+        /**
+         * The Item.
+         */
         private T item;
-        private HolderRecycler holderRecycler;
+        /**
+         * The Holder recycler.
+         */
+        private H holderRecycler;
 
         /**
          * Instantiates a new Builder.
          *
          * @param holderRecycler the recycler holder
          */
-        public Builder(HolderRecycler holderRecycler) {
+        public Builder(H holderRecycler) {
             this.holderRecycler = holderRecycler;
         }
 
@@ -87,7 +107,7 @@ public class AgileAdapterBuilder<T> {
          * @param item the item
          * @return the item
          */
-        public Builder<T> setItem(T item) {
+        public Builder<T, H> setItem(T item) {
             this.item = item;
             return this;
         }
@@ -107,7 +127,7 @@ public class AgileAdapterBuilder<T> {
          * @param context the context
          * @return the context
          */
-        public Builder<T> setContext(Context context) {
+        public Builder<T, H> setContext(Context context) {
             this.context = context;
             return this;
         }
@@ -117,7 +137,7 @@ public class AgileAdapterBuilder<T> {
          *
          * @return the recycler holder
          */
-        private HolderRecycler getHolderRecycler() {
+        private H getHolderRecycler() {
             return holderRecycler;
         }
 
@@ -126,7 +146,7 @@ public class AgileAdapterBuilder<T> {
          *
          * @return the populator builder
          */
-        public AgileAdapterBuilder<T> build() {
+        public AgileAdapterBuilder<T, H> build() {
             return new AgileAdapterBuilder<>(this);
         }
     }
