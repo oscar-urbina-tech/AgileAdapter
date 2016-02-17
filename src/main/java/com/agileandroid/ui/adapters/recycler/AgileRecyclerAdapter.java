@@ -157,7 +157,7 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
 
         for(AgileAdapterDTO agileAdapterDTO : this.agileAdapterDTOList){
 
-            Interactor interactor = agileAdapterDTO.getInteractor();
+            final Interactor interactor = agileAdapterDTO.getInteractor();
 
             if(this.getItemViewType(position) == agileAdapterDTO.getViewType()){
                 interactor.setInteraction(agileRecyclerBuilder);
