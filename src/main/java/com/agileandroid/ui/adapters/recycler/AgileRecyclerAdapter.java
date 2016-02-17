@@ -23,6 +23,8 @@ import java.util.List;
 
 /**
  * Created by oscar.urbina on 8/28/15.
+ *
+ * @param <T> the type parameter
  */
 public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Adapter<HolderRecycler>{
 
@@ -49,7 +51,7 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
     /**
      * Instantiates a new Agile recycler adapter.
      *
-     * @param itemList the item list
+     * @param itemList        the item list
      * @param agileAdapterDTO the agile adapter dTO
      */
     public AgileRecyclerAdapter(List<T> itemList, AgileAdapterDTO agileAdapterDTO) {
@@ -61,7 +63,7 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
     /**
      * Instantiates a new Agile recycler adapter.
      *
-     * @param itemList the item list
+     * @param itemList            the item list
      * @param agileAdapterDTOList the agile adapter dTO
      */
     public AgileRecyclerAdapter(List<T> itemList, List<AgileAdapterDTO> agileAdapterDTOList) {
@@ -70,6 +72,12 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
     }
 
 
+    /**
+     * Gets item view type.
+     *
+     * @param position the position
+     * @return the item view type
+     */
     @Override
     public int getItemViewType(int position) {
 
@@ -87,6 +95,13 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
         return 0;
     }
 
+    /**
+     * On create view holder holder recycler.
+     *
+     * @param parent   the parent
+     * @param viewType the view type
+     * @return the holder recycler
+     */
     @Override
     public HolderRecycler onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -104,6 +119,12 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
         return new HolderRecycler(parent);
     }
 
+    /**
+     * On bind view holder.
+     *
+     * @param holder   the holder
+     * @param position the position
+     */
     @Override
     public void onBindViewHolder(HolderRecycler holder, final int position) {
 
@@ -130,6 +151,7 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
      * Add listeners to several view interactable items in current view
      *
      * @param agileRecyclerBuilder agileRecyclerBuilder Current holder element
+     * @param position             the position
      */
     private void handleCustomInteractions(AgileRecyclerBuilder agileRecyclerBuilder, int position) {
 
@@ -143,6 +165,11 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
         }
     }
 
+    /**
+     * Gets item count.
+     *
+     * @return the item count
+     */
     @Override
     public int getItemCount() {
         return this.itemList.size();
@@ -168,6 +195,7 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
         for(T item : newItemList){
             this.itemList.add(item);
         }
+
         super.notifyDataSetChanged();
     }
 
