@@ -130,7 +130,7 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
 
         final T listItem = this.itemList.get(position);
 
-        final AgileAdapterBuilder<T> agileAdapterBuilder = new AgileAdapterBuilder.Builder<T>(holder)
+        final AgileAdapterBuilder agileAdapterBuilder = new AgileAdapterBuilder.Builder<>(holder)
                 .setContext(this.context)
                 .setItem(listItem)
                 .build();
@@ -157,10 +157,13 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
 
         for(AgileAdapterDTO agileAdapterDTO : this.agileAdapterDTOList){
 
-            final Interactor interactor = agileAdapterDTO.getInteractor();
+            if(agileAdapterDTO.getInteractor() != null){
 
-            if(this.getItemViewType(position) == agileAdapterDTO.getViewType()){
-                interactor.setInteraction(agileAdapterBuilder);
+                final Interactor interactor = agileAdapterDTO.getInteractor();
+
+                if(this.getItemViewType(position) == agileAdapterDTO.getViewType()){
+                    interactor.setInteraction(agileAdapterBuilder);
+                }
             }
         }
     }
