@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import com.agileandroid.ui.adapters.TypableView;
 
 import com.agileandroid.ui.adapters.recycler.populator.Populator;
-import com.agileandroid.ui.adapters.recycler.builder.AgileRecyclerBuilder;
+import com.agileandroid.ui.adapters.recycler.builder.AgileAdapterBuilder;
 
 import com.agileandroid.ui.adapters.recycler.dto.AgileAdapterDTO;
 
@@ -130,7 +130,7 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
 
         final T listItem = this.itemList.get(position);
 
-        final AgileRecyclerBuilder<T> agileRecyclerBuilder = new AgileRecyclerBuilder.Builder<T>(holder)
+        final AgileAdapterBuilder<T> agileAdapterBuilder = new AgileAdapterBuilder.Builder<T>(holder)
                 .setContext(this.context)
                 .setItem(listItem)
                 .build();
@@ -140,27 +140,27 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
             if(this.getItemViewType(position) == agileAdapterDTO.getViewType()){
 
                 final Populator populator = agileAdapterDTO.getPopulator();
-                populator.populate(agileRecyclerBuilder);
+                populator.populate(agileAdapterBuilder);
             }
         }
 
-        this.handleCustomInteractions(agileRecyclerBuilder, position);
+        this.handleCustomInteractions(agileAdapterBuilder, position);
     }
 
     /**
      * Add listeners to several view interactable items in current view
      *
-     * @param agileRecyclerBuilder agileRecyclerBuilder Current holder element
+     * @param agileAdapterBuilder agileRecyclerBuilder Current holder element
      * @param position             the position
      */
-    private void handleCustomInteractions(AgileRecyclerBuilder agileRecyclerBuilder, int position) {
+    private void handleCustomInteractions(AgileAdapterBuilder agileAdapterBuilder, int position) {
 
         for(AgileAdapterDTO agileAdapterDTO : this.agileAdapterDTOList){
 
             final Interactor interactor = agileAdapterDTO.getInteractor();
 
             if(this.getItemViewType(position) == agileAdapterDTO.getViewType()){
-                interactor.setInteraction(agileRecyclerBuilder);
+                interactor.setInteraction(agileAdapterBuilder);
             }
         }
     }

@@ -2,7 +2,6 @@ package com.agileandroid.ui.adapters.recycler.builder;
 
 import android.content.Context;
 
-import com.agileandroid.ui.adapters.TypableView;
 import com.agileandroid.ui.adapters.recycler.holder.HolderRecycler;
 
 /**
@@ -10,7 +9,7 @@ import com.agileandroid.ui.adapters.recycler.holder.HolderRecycler;
  *
  * @param <T> the type parameter
  */
-public class AgileRecyclerBuilder<T> {
+public class AgileAdapterBuilder<T> {
 
     private Context context;
     private T item;
@@ -21,7 +20,7 @@ public class AgileRecyclerBuilder<T> {
      *
      * @param builder
      */
-    private AgileRecyclerBuilder(Builder<T> builder) {
+    private AgileAdapterBuilder(Builder<T> builder) {
         this.context = builder.getContext();
         this.item = builder.getItem();
         this.holderRecycler = builder.getHolderRecycler();
@@ -127,8 +126,8 @@ public class AgileRecyclerBuilder<T> {
          *
          * @return the populator builder
          */
-        public AgileRecyclerBuilder<T> build() {
-            return new AgileRecyclerBuilder<>(this);
+        public AgileAdapterBuilder<T> build() {
+            return new AgileAdapterBuilder<>(this);
         }
     }
 }
