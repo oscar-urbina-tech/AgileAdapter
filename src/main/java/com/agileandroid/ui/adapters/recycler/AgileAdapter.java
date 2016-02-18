@@ -13,7 +13,7 @@ import com.agileandroid.ui.adapters.AgileAdapterBuilder;
 
 import com.agileandroid.ui.adapters.recycler.dto.AgileAdapterDTO;
 
-import com.agileandroid.ui.adapters.holder.HolderRecycler;
+import com.agileandroid.ui.adapters.holder.BaseHolder;
 import com.agileandroid.ui.adapters.recycler.interactor.Interactor;
 
 import com.agileandroid.ui.adapters.recycler.resolver.ViewResolver;
@@ -26,7 +26,7 @@ import java.util.List;
  *
  * @param <T> the type parameter
  */
-public class AgileAdapter<T extends TypableView> extends RecyclerView.Adapter<HolderRecycler>{
+public class AgileAdapter<T extends TypableView> extends RecyclerView.Adapter<BaseHolder>{
 
     /**
      * The log tag
@@ -103,7 +103,7 @@ public class AgileAdapter<T extends TypableView> extends RecyclerView.Adapter<Ho
      * @return the holder recycler
      */
     @Override
-    public HolderRecycler onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BaseHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         this.context = parent.getContext();
 
@@ -116,7 +116,7 @@ public class AgileAdapter<T extends TypableView> extends RecyclerView.Adapter<Ho
             }
         }
 
-        return new HolderRecycler(parent);
+        return new BaseHolder(parent);
     }
 
     /**
@@ -126,7 +126,7 @@ public class AgileAdapter<T extends TypableView> extends RecyclerView.Adapter<Ho
      * @param position the position
      */
     @Override
-    public void onBindViewHolder(HolderRecycler holder, final int position) {
+    public void onBindViewHolder(BaseHolder holder, final int position) {
 
         final T listItem = this.itemList.get(position);
 

@@ -4,7 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.agileandroid.ui.adapters.AgileAdapterBuilder;
-import com.agileandroid.ui.adapters.holder.HolderRecycler;
+import com.agileandroid.ui.adapters.holder.BaseHolder;
 import com.agileandroid.ui.adapters.view.interactor.Interactor;
 import com.agileandroid.ui.adapters.view.populator.Populator;
 
@@ -20,7 +20,7 @@ public abstract class ViewResolver {
      */
     public <T> View resolve(final ViewResolverBuilder<T> viewResolverBuilder) {
 
-        HolderRecycler recyclerHolder;
+        BaseHolder recyclerHolder;
 
         View convertView = viewResolverBuilder.getConvertView();
 
@@ -37,7 +37,7 @@ public abstract class ViewResolver {
             convertView.setTag(recyclerHolder);
 
         } else {
-            recyclerHolder = (HolderRecycler) convertView.getTag();
+            recyclerHolder = (BaseHolder) convertView.getTag();
         }
 
         final Populator populator = viewResolverBuilder.getAgileAdapterDTO().getPopulator();
@@ -63,7 +63,7 @@ public abstract class ViewResolver {
      * @param convertView the convert view
      * @return the gA banner view
      */
-    protected abstract HolderRecycler getHolder(View convertView);
+    protected abstract BaseHolder getHolder(View convertView);
 
     /**
      * Gets layout resource.

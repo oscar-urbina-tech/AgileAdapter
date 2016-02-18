@@ -2,7 +2,7 @@ package com.agileandroid.ui.adapters.view.dto;
 
 import android.content.Context;
 
-import com.agileandroid.ui.adapters.holder.HolderRecycler;
+import com.agileandroid.ui.adapters.holder.BaseHolder;
 
 /**
  * Created by oscar.urbina on 8/28/15.
@@ -11,19 +11,19 @@ public class InteractorDTO<T> {
 
     private T item;
 
-    private HolderRecycler holderRecycler;
+    private BaseHolder baseHolder;
     private Context context;
 
     /**
      * Instantiates a new Interactor dTO.
      *
      * @param item the item
-     * @param holderRecycler the recycler holder
+     * @param baseHolder the recycler holder
      * @param context the context
      */
-    public InteractorDTO(T item, HolderRecycler holderRecycler, Context context) {
+    public InteractorDTO(T item, BaseHolder baseHolder, Context context) {
         this.item = item;
-        this.holderRecycler = holderRecycler;
+        this.baseHolder = baseHolder;
         this.context = context;
     }
 
@@ -41,8 +41,8 @@ public class InteractorDTO<T> {
      *
      * @return the recycler holder
      */
-    public HolderRecycler getHolderRecycler() {
-        return holderRecycler;
+    public BaseHolder getBaseHolder() {
+        return baseHolder;
     }
 
     /**

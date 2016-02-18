@@ -1,7 +1,7 @@
 package com.agileandroid.ui.adapters.recycler.populator;
 
 import com.agileandroid.ui.adapters.AgileAdapterBuilder;
-import com.agileandroid.ui.adapters.holder.HolderRecycler;
+import com.agileandroid.ui.adapters.holder.BaseHolder;
 
 /**
  * Created by oscar.urbina on 8/28/15.
@@ -9,7 +9,7 @@ import com.agileandroid.ui.adapters.holder.HolderRecycler;
  * @param <T> the type parameter
  * @param <H> the type parameter
  */
-public abstract class Populator<T, H extends HolderRecycler>{
+public abstract class Populator<T, H extends BaseHolder>{
 
     /**
      * Populate current view.

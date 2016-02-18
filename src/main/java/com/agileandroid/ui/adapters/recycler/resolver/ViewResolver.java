@@ -4,7 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.agileandroid.ui.adapters.holder.HolderRecycler;
+import com.agileandroid.ui.adapters.holder.BaseHolder;
 
 /**
  * Created by oscar.urbina on 8/28/15.
@@ -16,7 +16,7 @@ public abstract class ViewResolver {
      *
      * @return the holder with a view reference related to the layout resource
      */
-    public HolderRecycler resolve(final ViewGroup parent) {
+    public BaseHolder resolve(final ViewGroup parent) {
 
         final LayoutInflater layoutInflater
                 = LayoutInflater.from(parent.getContext());
@@ -37,5 +37,5 @@ public abstract class ViewResolver {
      * @param view the view
      * @return the holder
      */
-    protected abstract HolderRecycler getHolder(View view);
+    protected abstract BaseHolder getHolder(View view);
 }

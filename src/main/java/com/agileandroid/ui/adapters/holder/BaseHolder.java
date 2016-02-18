@@ -9,13 +9,13 @@ import android.view.View;
 /**
  * The type Recycler holder.
  */
-public class HolderRecycler extends RecyclerView.ViewHolder{
+public class BaseHolder extends RecyclerView.ViewHolder{
     /**
      * Instantiates a new Recycler holder.
      *
      * @param itemView the item view
      */
-    public HolderRecycler(View itemView) {
+    public BaseHolder(View itemView) {
         super(itemView);
     }
 }

@@ -2,7 +2,7 @@ package com.agileandroid.ui.adapters;
 
 import android.content.Context;
 
-import com.agileandroid.ui.adapters.holder.HolderRecycler;
+import com.agileandroid.ui.adapters.holder.BaseHolder;
 
 /**
  * The type Populator builder.
@@ -10,7 +10,7 @@ import com.agileandroid.ui.adapters.holder.HolderRecycler;
  * @param <T> the type parameter
  * @param <H> the type parameter
  */
-public class AgileAdapterBuilder<T, H extends HolderRecycler> {
+public class AgileAdapterBuilder<T, H extends BaseHolder> {
 
     /**
      * The Context.
@@ -69,7 +69,7 @@ public class AgileAdapterBuilder<T, H extends HolderRecycler> {
      * @param <T> the type parameter
      * @param <H> the type parameter
      */
-    public static class Builder<T, H extends HolderRecycler> {
+    public static class Builder<T, H extends BaseHolder> {
         /**
          * The Context.
          */
