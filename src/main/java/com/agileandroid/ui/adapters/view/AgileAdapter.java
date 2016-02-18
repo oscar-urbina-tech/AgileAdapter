@@ -1,4 +1,4 @@
-package com.agileandroid.ui.adapters;
+package com.agileandroid.ui.adapters.view;
 
 import android.view.View;
 import android.view.ViewGroup;
