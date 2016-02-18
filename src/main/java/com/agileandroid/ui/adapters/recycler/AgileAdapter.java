@@ -13,7 +13,7 @@ import com.agileandroid.ui.adapters.AgileAdapterBuilder;
 
 import com.agileandroid.ui.adapters.recycler.dto.AgileAdapterDTO;
 
-import com.agileandroid.ui.adapters.recycler.holder.HolderRecycler;
+import com.agileandroid.ui.adapters.holder.HolderRecycler;
 import com.agileandroid.ui.adapters.recycler.interactor.Interactor;
 
 import com.agileandroid.ui.adapters.recycler.resolver.ViewResolver;

@@ -1,7 +1,7 @@
 package com.agileandroid.ui.adapters.recycler.interactor;
 
 import com.agileandroid.ui.adapters.AgileAdapterBuilder;
-import com.agileandroid.ui.adapters.recycler.holder.HolderRecycler;
+import com.agileandroid.ui.adapters.holder.HolderRecycler;
 
 /**
  * Created by oscar.urbina on 8/28/15.

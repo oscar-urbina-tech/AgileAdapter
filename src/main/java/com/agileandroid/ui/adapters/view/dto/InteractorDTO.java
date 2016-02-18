@@ -2,7 +2,7 @@ package com.agileandroid.ui.adapters.view.dto;
 
 import android.content.Context;
 
-import com.agileandroid.ui.adapters.recycler.holder.HolderRecycler;
+import com.agileandroid.ui.adapters.holder.HolderRecycler;
 
 /**
  * Created by oscar.urbina on 8/28/15.
