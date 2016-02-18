@@ -2,20 +2,15 @@ package com.agileandroid.ui.adapters.recycler;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.ViewGroup;
 
-import com.agileandroid.ui.adapters.TypableView;
-
-import com.agileandroid.ui.adapters.recycler.populator.Populator;
 import com.agileandroid.ui.adapters.AgileAdapterBuilder;
-
-import com.agileandroid.ui.adapters.recycler.dto.AgileAdapterDTO;
-
+import com.agileandroid.ui.adapters.TypableView;
 import com.agileandroid.ui.adapters.holder.BaseHolder;
+import com.agileandroid.ui.adapters.recycler.dto.AgileAdapterDTO;
 import com.agileandroid.ui.adapters.recycler.interactor.Interactor;
-
+import com.agileandroid.ui.adapters.recycler.populator.Populator;
 import com.agileandroid.ui.adapters.recycler.resolver.ViewResolver;
 
 import java.util.ArrayList;

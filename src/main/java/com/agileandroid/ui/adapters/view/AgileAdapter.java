@@ -4,9 +4,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.agileandroid.ui.adapters.view.resolver.ViewResolverBuilder;
 import com.agileandroid.ui.adapters.view.dto.AgileAdapterDTO;
 import com.agileandroid.ui.adapters.view.resolver.ViewResolver;
+import com.agileandroid.ui.adapters.view.resolver.ViewResolverBuilder;
 
 import java.util.List;
 

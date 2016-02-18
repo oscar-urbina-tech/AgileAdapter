@@ -2,7 +2,6 @@ package com.agileandroid.ui.adapters.recycler.dto;
 
 import com.agileandroid.ui.adapters.TypableView;
 import com.agileandroid.ui.adapters.recycler.interactor.Interactor;
-
 import com.agileandroid.ui.adapters.recycler.populator.Populator;
 import com.agileandroid.ui.adapters.recycler.resolver.ViewResolver;
 
