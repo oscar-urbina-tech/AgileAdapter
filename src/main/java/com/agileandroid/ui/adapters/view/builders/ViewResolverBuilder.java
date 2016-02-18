@@ -12,12 +12,32 @@ import com.agileandroid.ui.adapters.view.dto.AgileAdapterDTO;
  */
 public class ViewResolverBuilder<T> {
 
+    /**
+     * The Convert view.
+     */
     private View convertView;
+    /**
+     * The Parent.
+     */
     private ViewGroup parent;
+    /**
+     * The Item view type.
+     */
     private int itemViewType;
+    /**
+     * The Item.
+     */
     private T item;
+    /**
+     * The Agile adapter dto.
+     */
     private AgileAdapterDTO agileAdapterDTO;
 
+    /**
+     * Instantiates a new View resolver builder.
+     *
+     * @param builder the builder
+     */
     private ViewResolverBuilder(Builder<T> builder) {
         this.convertView = builder.getConvertView();
         this.parent = builder.getParent();
@@ -78,11 +98,26 @@ public class ViewResolverBuilder<T> {
      */
     public static class Builder<T> {
 
+        /**
+         * The Convert view.
+         */
         private View convertView;
+        /**
+         * The Parent.
+         */
         private ViewGroup parent;
 
+        /**
+         * The Item view type.
+         */
         private int itemViewType;
+        /**
+         * The Item.
+         */
         private T item;
+        /**
+         * The Agile adapter dto.
+         */
         private AgileAdapterDTO agileAdapterDTO;
 
         /**
@@ -118,14 +153,29 @@ public class ViewResolverBuilder<T> {
             return new ViewResolverBuilder<>(this);
         }
 
+        /**
+         * Gets convert view.
+         *
+         * @return the convert view
+         */
         private View getConvertView() {
             return convertView;
         }
 
+        /**
+         * Gets parent.
+         *
+         * @return the parent
+         */
         private ViewGroup getParent() {
             return parent;
         }
 
+        /**
+         * Gets item view type.
+         *
+         * @return the item view type
+         */
         private int getItemViewType() {
             return itemViewType;
         }
