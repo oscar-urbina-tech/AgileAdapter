@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import com.agileandroid.ui.adapters.TypableView;
 
 import com.agileandroid.ui.adapters.recycler.populator.Populator;
-import com.agileandroid.ui.adapters.recycler.builder.AgileAdapterBuilder;
+import com.agileandroid.ui.adapters.AgileAdapterBuilder;
 
 import com.agileandroid.ui.adapters.recycler.dto.AgileAdapterDTO;
 

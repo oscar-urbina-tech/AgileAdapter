@@ -1,6 +1,6 @@
 package com.agileandroid.ui.adapters.recycler.populator;
 
-import com.agileandroid.ui.adapters.recycler.builder.AgileAdapterBuilder;
+import com.agileandroid.ui.adapters.AgileAdapterBuilder;
 import com.agileandroid.ui.adapters.recycler.holder.HolderRecycler;
 
 /**

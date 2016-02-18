@@ -1,4 +1,4 @@
-package com.agileandroid.ui.adapters.recycler.builder;
+package com.agileandroid.ui.adapters;
 
 import android.content.Context;
 
