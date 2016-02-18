@@ -5,7 +5,6 @@ import android.view.View;
 
 import com.agileandroid.ui.adapters.recycler.builder.AgileAdapterBuilder;
 import com.agileandroid.ui.adapters.recycler.holder.HolderRecycler;
-import com.agileandroid.ui.adapters.view.builders.ViewResolverBuilder;
 import com.agileandroid.ui.adapters.view.interactor.Interactor;
 import com.agileandroid.ui.adapters.view.populator.Populator;
 
