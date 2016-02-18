@@ -26,12 +26,12 @@ import java.util.List;
  *
  * @param <T> the type parameter
  */
-public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Adapter<HolderRecycler>{
+public class AgileAdapter<T extends TypableView> extends RecyclerView.Adapter<HolderRecycler>{
 
     /**
      * The log tag
      */
-    private static final String LOG_TAG = AgileRecyclerAdapter.class.getSimpleName();
+    private static final String LOG_TAG = AgileAdapter.class.getSimpleName();
 
     /**
      * The Item list.
@@ -54,7 +54,7 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
      * @param itemList        the item list
      * @param agileAdapterDTO the agile adapter dTO
      */
-    public AgileRecyclerAdapter(List<T> itemList, AgileAdapterDTO agileAdapterDTO) {
+    public AgileAdapter(List<T> itemList, AgileAdapterDTO agileAdapterDTO) {
         this.itemList = itemList;
         this.agileAdapterDTOList = new ArrayList<>();
         this.agileAdapterDTOList.add(agileAdapterDTO);
@@ -66,7 +66,7 @@ public class AgileRecyclerAdapter<T extends TypableView> extends RecyclerView.Ad
      * @param itemList            the item list
      * @param agileAdapterDTOList the agile adapter dTO
      */
-    public AgileRecyclerAdapter(List<T> itemList, List<AgileAdapterDTO> agileAdapterDTOList) {
+    public AgileAdapter(List<T> itemList, List<AgileAdapterDTO> agileAdapterDTOList) {
         this.itemList = itemList;
         this.agileAdapterDTOList = agileAdapterDTOList;
     }

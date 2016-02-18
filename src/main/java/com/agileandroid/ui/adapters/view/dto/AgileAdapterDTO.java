@@ -42,7 +42,6 @@ public class AgileAdapterDTO {
      * @param interactor   the interactor
      */
     public AgileAdapterDTO(ViewResolver viewResolver, Populator populator, Interactor interactor) {
-
         this.populator = populator;
         this.viewResolver = viewResolver;
         this.interactor = interactor;
