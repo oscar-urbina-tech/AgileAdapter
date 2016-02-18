@@ -11,16 +11,28 @@ import com.agileandroid.ui.adapters.recycler.resolver.ViewResolver;
  */
 public class AgileAdapterDTO implements TypableView{
 
+    /**
+     * The Populator.
+     */
     private Populator populator;
+    /**
+     * The View resolver.
+     */
     private ViewResolver viewResolver;
+    /**
+     * The Interactor.
+     */
     private Interactor interactor;
+    /**
+     * The Item view type.
+     */
     private int itemViewType;
 
     /**
      * Instantiates a new Agile adapter dTO.
      *
      * @param viewResolver the recycler view resolver
-     * @param populator the populator
+     * @param populator    the populator
      */
     public AgileAdapterDTO(ViewResolver viewResolver, Populator populator) {
         this.populator = populator;
@@ -31,11 +43,10 @@ public class AgileAdapterDTO implements TypableView{
      * Instantiates a new Agile adapter dTO.
      *
      * @param viewResolver the recycler view resolver
-     * @param populator the populator
-     * @param interactor the interactor
+     * @param populator    the populator
+     * @param interactor   the interactor
      */
     public AgileAdapterDTO(ViewResolver viewResolver, Populator populator, Interactor interactor) {
-
         this.populator = populator;
         this.viewResolver = viewResolver;
         this.interactor = interactor;
@@ -45,7 +56,8 @@ public class AgileAdapterDTO implements TypableView{
      * Instantiates a new Agile adapter dTO.
      *
      * @param viewResolver the recycler view resolver
-     * @param populator the populator
+     * @param populator    the populator
+     * @param itemViewType the item view type
      */
     public AgileAdapterDTO(ViewResolver viewResolver, Populator populator, int itemViewType) {
         this.populator = populator;
@@ -57,11 +69,11 @@ public class AgileAdapterDTO implements TypableView{
      * Instantiates a new Agile adapter dTO.
      *
      * @param viewResolver the recycler view resolver
-     * @param populator the populator
-     * @param interactor the interactor
+     * @param populator    the populator
+     * @param interactor   the interactor
+     * @param itemViewType the item view type
      */
     public AgileAdapterDTO(ViewResolver viewResolver, Populator populator, Interactor interactor, int itemViewType) {
-
         this.populator = populator;
         this.viewResolver = viewResolver;
         this.interactor = interactor;
@@ -95,6 +107,11 @@ public class AgileAdapterDTO implements TypableView{
         return interactor;
     }
 
+    /**
+     * Gets view type.
+     *
+     * @return the view type
+     */
     @Override
     public int getViewType() {
         return this.itemViewType;
