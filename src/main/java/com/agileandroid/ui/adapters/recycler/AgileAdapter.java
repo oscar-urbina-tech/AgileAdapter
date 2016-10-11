@@ -17,14 +17,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by oscar.urbina on 8/28/15.
+ * The type Agile adapter.
  *
  * @param <T> the type parameter
  */
 public class AgileAdapter<T extends TypableView> extends RecyclerView.Adapter<BaseHolder>{
 
     /**
-     * The log tag
+     * The constant LOG_TAG.
      */
     private static final String LOG_TAG = AgileAdapter.class.getSimpleName();
 
@@ -34,34 +34,44 @@ public class AgileAdapter<T extends TypableView> extends RecyclerView.Adapter<Ba
     protected List<T> itemList;
 
     /**
-     * The ViewGroup parent context
+     * The Context.
      */
     private Context context;
 
     /**
-     * The agile adapter DTO Recycler list
+     * The Agile adapter dto list.
      */
     private List<AgileAdapterDTO> agileAdapterDTOList;
 
     /**
-     * Instantiates a new Agile recycler adapter.
+     * Instantiates a new Agile adapter.
      *
      * @param itemList        the item list
-     * @param agileAdapterDTO the agile adapter dTO
+     * @param agileAdapterDTO the agile adapter dto
      */
     public AgileAdapter(List<T> itemList, AgileAdapterDTO agileAdapterDTO) {
+
+        if(itemList == null || agileAdapterDTO == null){
+            throw new IllegalArgumentException("Your item list or your agileAdapterDTO can not be null.");
+        }
+
         this.itemList = itemList;
         this.agileAdapterDTOList = new ArrayList<>();
         this.agileAdapterDTOList.add(agileAdapterDTO);
     }
 
     /**
-     * Instantiates a new Agile recycler adapter.
+     * Instantiates a new Agile adapter.
      *
      * @param itemList            the item list
-     * @param agileAdapterDTOList the agile adapter dTO
+     * @param agileAdapterDTOList the agile adapter dto list
      */
     public AgileAdapter(List<T> itemList, List<AgileAdapterDTO> agileAdapterDTOList) {
+
+        if(itemList == null || agileAdapterDTOList == null){
+            throw new IllegalArgumentException("Your item list or your agileAdapterDTOList can not be null.");
+        }
+
         this.itemList = itemList;
         this.agileAdapterDTOList = agileAdapterDTOList;
     }
@@ -91,11 +101,11 @@ public class AgileAdapter<T extends TypableView> extends RecyclerView.Adapter<Ba
     }
 
     /**
-     * On create view holder holder recycler.
+     * On create view holder base holder.
      *
      * @param parent   the parent
      * @param viewType the view type
-     * @return the holder recycler
+     * @return the base holder
      */
     @Override
     public BaseHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -143,10 +153,10 @@ public class AgileAdapter<T extends TypableView> extends RecyclerView.Adapter<Ba
     }
 
     /**
-     * Add listeners to several view interactable items in current view
+     * Handle custom interactions.
      *
-     * @param agileAdapterBuilder agileRecyclerBuilder Current holder element
-     * @param position             the position
+     * @param agileAdapterBuilder the agile adapter builder
+     * @param position            the position
      */
     private void handleCustomInteractions(AgileAdapterBuilder agileAdapterBuilder, int position) {
 
@@ -174,23 +184,32 @@ public class AgileAdapter<T extends TypableView> extends RecyclerView.Adapter<Ba
     }
 
     /**
-     * Add post.
+     * Add item.
      *
      * @param item the item
      */
     public void addItem(T item) {
+
+        if(item == null){
+            throw new IllegalArgumentException("item to be added can not be null.");
+        }
+
         this.itemList.add(item);
         super.notifyDataSetChanged();
     }
 
     /**
-     * Update posts list.
+     * Append item list.
      *
-     * @param newItemList the new item list
+     * @param itemList the item list
      */
-    public void appendNewItemList(List<T> newItemList){
+    public void appendItemList(List<T> itemList){
 
-        for(T item : newItemList){
+        if(itemList == null){
+            throw new IllegalArgumentException("item to be removed can not be null.");
+        }
+
+        for(T item : itemList){
             this.itemList.add(item);
         }
 
@@ -198,11 +217,15 @@ public class AgileAdapter<T extends TypableView> extends RecyclerView.Adapter<Ba
     }
 
     /**
-     * Removes an item from current list
+     * Remove item list.
      *
-     * @param item the item to be removed
+     * @param item the item
      */
-    public void removeItemList(T item){
+    public void removeItem(T item){
+
+        if(item == null){
+            throw new IllegalArgumentException("item to be removed can not be null.");
+        }
 
         if(this.itemList.contains(item)){
             this.itemList.remove(item);
@@ -214,10 +237,19 @@ public class AgileAdapter<T extends TypableView> extends RecyclerView.Adapter<Ba
     }
 
     /**
-     * Clear posts list.
+     * Clear item list.
      */
     public void clearItemList() {
         this.itemList.clear();
         super.notifyDataSetChanged();
+    }
+
+    /**
+     * Get item list list.
+     *
+     * @return the list
+     */
+    public List<T> getItemList(){
+        return this.itemList;
     }
 }
