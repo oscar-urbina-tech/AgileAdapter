@@ -1,4 +1,4 @@
-package com.agileandroid.ui.adapters.view.builders;
+package com.agileandroid.ui.adapters.view.resolver;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,16 +7,38 @@ import com.agileandroid.ui.adapters.view.dto.AgileAdapterDTO;
 
 /**
  * Created by oscar.urbina on 7/17/15.
+ *
+ * @param <T> the type parameter
  */
-public class ViewResolverBuilder {
+public class ViewResolverBuilder<T> {
 
+    /**
+     * The Convert view.
+     */
     private View convertView;
+    /**
+     * The Parent.
+     */
     private ViewGroup parent;
+    /**
+     * The Item view type.
+     */
     private int itemViewType;
-    private Object item;
+    /**
+     * The Item.
+     */
+    private T item;
+    /**
+     * The Agile adapter dto.
+     */
     private AgileAdapterDTO agileAdapterDTO;
 
-    private ViewResolverBuilder(Builder builder) {
+    /**
+     * Instantiates a new View resolver builder.
+     *
+     * @param builder the builder
+     */
+    private ViewResolverBuilder(Builder<T> builder) {
         this.convertView = builder.getConvertView();
         this.parent = builder.getParent();
         this.itemViewType = builder.getItemViewType();
@@ -65,20 +87,37 @@ public class ViewResolverBuilder {
      *
      * @return the item dTO
      */
-    public Object getItem() {
+    public T getItem() {
         return this.item;
     }
 
     /**
      * The type Builder.
+     *
+     * @param <T> the type parameter
      */
-    public static class Builder {
+    public static class Builder<T> {
 
+        /**
+         * The Convert view.
+         */
         private View convertView;
+        /**
+         * The Parent.
+         */
         private ViewGroup parent;
 
+        /**
+         * The Item view type.
+         */
         private int itemViewType;
-        private Object item;
+        /**
+         * The Item.
+         */
+        private T item;
+        /**
+         * The Agile adapter dto.
+         */
         private AgileAdapterDTO agileAdapterDTO;
 
         /**
@@ -110,18 +149,33 @@ public class ViewResolverBuilder {
          *
          * @return the view resolver builder
          */
-        public ViewResolverBuilder build() {
-            return new ViewResolverBuilder(this);
+        public ViewResolverBuilder<T> build() {
+            return new ViewResolverBuilder<>(this);
         }
 
+        /**
+         * Gets convert view.
+         *
+         * @return the convert view
+         */
         private View getConvertView() {
             return convertView;
         }
 
+        /**
+         * Gets parent.
+         *
+         * @return the parent
+         */
         private ViewGroup getParent() {
             return parent;
         }
 
+        /**
+         * Gets item view type.
+         *
+         * @return the item view type
+         */
         private int getItemViewType() {
             return itemViewType;
         }
@@ -131,7 +185,7 @@ public class ViewResolverBuilder {
          *
          * @return the item dTO
          */
-        public Object getItem() {
+        public T getItem() {
             return item;
         }
 
@@ -141,7 +195,7 @@ public class ViewResolverBuilder {
          * @param item the item
          * @return the item dTO
          */
-        public Builder setItem(Object item) {
+        public Builder<T> setItem(T item) {
             this.item = item;
             return this;
         }

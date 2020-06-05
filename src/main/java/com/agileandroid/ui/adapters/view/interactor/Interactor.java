@@ -1,18 +1,20 @@
 package com.agileandroid.ui.adapters.view.interactor;
 
-import com.agileandroid.ui.adapters.recycler.builder.AgileRecyclerBuilder;
-import com.agileandroid.ui.listeners.BaseOnClickListener;
-import com.agileandroid.ui.adapters.view.dto.InteractorDTO;
-
-import java.util.List;
+import com.agileandroid.ui.adapters.AgileAdapterBuilder;
+import com.agileandroid.ui.adapters.holder.BaseHolder;
 
 /**
  * Created by oscar.urbina on 8/28/15.
+ *
+ * @param <T> the type parameter
+ * @param <H> the type parameter
  */
-public abstract class Interactor {
+public abstract class Interactor<T, H extends BaseHolder> {
 
     /**
      * Sets interaction.
+     *
+     * @param agileAdapterBuilder the agile adapter builder
      */
-    public abstract void setInteraction(AgileRecyclerBuilder agileRecyclerBuilder);
+    public abstract void setInteraction(AgileAdapterBuilder<T, H> agileAdapterBuilder);
 }

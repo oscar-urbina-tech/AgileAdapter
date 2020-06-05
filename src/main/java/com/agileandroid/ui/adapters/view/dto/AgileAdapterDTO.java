@@ -10,8 +10,17 @@ import com.agileandroid.ui.adapters.view.resolver.ViewResolver;
  */
 public class AgileAdapterDTO {
 
+    /**
+     * The Populator.
+     */
     private Populator populator;
+    /**
+     * The View resolver.
+     */
     private ViewResolver viewResolver;
+    /**
+     * The Interactor.
+     */
     private Interactor interactor;
 
     /**
@@ -33,7 +42,6 @@ public class AgileAdapterDTO {
      * @param interactor   the interactor
      */
     public AgileAdapterDTO(ViewResolver viewResolver, Populator populator, Interactor interactor) {
-
         this.populator = populator;
         this.viewResolver = viewResolver;
         this.interactor = interactor;
